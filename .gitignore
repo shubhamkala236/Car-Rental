@@ -1,0 +1,60 @@
+# .NET Core
+bin/
+obj/
+**/*.exe
+**/*.dll
+**/*.pdb
+**/*.user
+
+# Visual Studio Code
+.vscode/
+*.csproj.user
+.vs/
+
+# NuGet Packages
+*.nuget.props
+*.nuget.targets
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+
+# Test Results
+[Tt]est[Rr]esult*/
+*.testsettings
+
+
+# Node.js
+node_modules/
+
+# Build output
+/dist/
+/dist-server/
+/dist-ssr/
+/tmp/
+/out-tsc/
+
+# IDE-specific files
+/.idea/
+/.vscode/
+*.iml
+*.ipr
+*.iws
+*.bak
+*.swp
+*~
+*.log
+npm-debug.log*
+
+# Angular CLI configuration
+.angular-cli.json
+.angular-cli/
+
+# Testing
+/karma-coverage/
+
+
+# Dependency lock files
+package-lock.json
+yarn.lock
+

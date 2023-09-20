@@ -1,0 +1,49 @@
+<div class="dashboard container">
+    <div></div>
+    <div class="row m-4 p-3">
+            <!-- form search based on keystrokes from user calling function  -->
+            <div class="heading">
+                <i class="bi bi-truck h4"> Cars</i>
+            </div>
+            <form class="col d-flex" [formGroup]="searchForm" (input)="onSearch()">
+                <i class="bi bi-search mr-1 p-1 search-btn"></i>
+                <input class="form-control form" formControlName="searchTerm" placeholder="Search (Maker, Model, or Rental Price)" />
+            </form>
+    </div>
+    
+    <div class="m-4 p-3 m-sm-auto">
+            <ul class="list-unstyled list-group mt-1">
+                <li *ngFor="let car of filteredCars" class="list-item row mb-3 p-2 rounded-3">
+                    <div class="details-col col">
+                        <div class="maker-name p-sm-0 p-1">
+                            <strong><i class="bi bi-car-front"> {{car.maker}}</i></strong>
+                        </div>
+                        <div class="model-name p-sm-0 p-1">
+                            <strong><i class="bi bi-alexa"> {{car.model}}</i></strong>
+                        </div>
+                        <div class="price p-sm-0 p-1">
+                            <strong><i class="bi bi-currency-rupee">{{car.rentPrice}}/day</i></strong>
+                        </div>
+                    </div>
+                        
+                    <div class="avilable-status col m-3 p-3">
+                        <div class="row text-end">
+                            <div class="available-box col">
+                                <!-- Availible:{{car.availibilityStatus}} -->
+                                <div *ngIf="car.availibilityStatus=='available'" class="available p-1 m-1 text-center h6"><i class="bi bi-emoji-smile-fill"></i> Available</div>
+                                <div *ngIf="car.availibilityStatus=='unavailable'" class="not-available p-1 m-1 text-center h6"><i class="bi bi-emoji-frown-fill"></i> Unavailable</div>
+                            </div> 
+                            <div *ngIf="userRole=='user'" class="view-detail col">
+                                <button  (click)="viewCarDetails(car.carId)" class="btn btn-primary btn-md m-auto p-auto" type="button">Rent</button>
+                            </div> 
+                            <div *ngIf="userRole=='admin'" class="view-detail col">
+                                <button  (click)="editCarAdmin(car.carId)" class="btn btn-primary btn-md m-1 p-1" type="button">Edit</button>
+                                <button  (click)="deleteCarAdmin(car.carId)" class="btn btn-danger btn-md m-1 p-1" type="button">Delete</button>
+                            </div> 
+                        </div>
+                    </div> 
+                </li>
+                
+            </ul>
+    </div>
+</div>

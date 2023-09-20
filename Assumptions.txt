@@ -1,0 +1,16 @@
+-------------Assumptions for Car Rent Application-------------
+1. Any USER can rent a car by entering the number of days (Starting from today).
+2. USER can either accept a agreement or reject agreement.
+3. After accepting the agreement user cannot modify or delete the agreement and that CAR would be made UNAVAILABLE for other users. 
+4. USER can RETURN the rented car before the End Date by pressing Return Request Button from his agreement.
+5. After requesting for return, Car status would be changed to UNDER INSPECTION, and ADMIN can only accept the return request.
+6. If ADMIN accept return request for a USER then that car would be returned and will be available for other users.
+
+7. ADMIN can perform CRUD operations on CARS.
+8. ADMIN can also EDIT OR DELETE the Agreements for any USER.
+9. If ADMIN EDIT a CAR all the corresponding agreements would be changed accordingly.
+10. If ADMIN DELETE a CAR all the corresponding agreements associated with that car will also be deleted.
+
+11. In USER dashboard user can only edit or delete the not-accepted agreements.
+12. USER can search for cars based on MODEL, MAKER, Price in the Search bar of the Home Page.
+13. ADMIN dashboard has list of all agreements and can use filter buttons to show them on basis of Pending, Requested_Return, Approved Agreements.

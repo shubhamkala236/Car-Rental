@@ -1,0 +1,67 @@
+<div class="container-data">
+    <h2 class="text-center m-2">All Agreements</h2>
+    <div class="filter-button text-end">
+        <button (click)="filter('pending')" class="btn btn-primary btn-sm m-2 pending">Pending</button>
+        <button (click)="filter('returnRequested')" class="btn btn-primary btn-sm m-2 request">Request_Return</button>
+        <button (click)="filter('approved')" class="btn btn-primary btn-sm m-2 approved">Approved</button>
+    </div>
+    <ul class="list-unstyled list-group">
+        <!-- <li *ngFor="let agreement of myAgreementsList" class="list-items row m-5"> -->
+        <li *ngFor="let agreement of filteredAgreements" class="list-items row m-5">
+            
+            <div class="left col m-2 p-2">
+                <div class="cardetails">
+
+                    <div class="car-data items m-2">
+                        <strong><i class="bi bi-car-front-fill"> {{agreement.carDetails?.maker}}</i></strong>
+                    </div>
+                    <div class="user-data items m-2">
+                        <strong><i class="bi bi-alexa"> {{agreement.carDetails?.model}}</i></strong>
+                    </div>
+                    <div class="user-data items m-2">
+                        <strong><i class="bi bi-currency-rupee">{{agreement.carDetails?.rentPrice}}/day</i></strong>
+                    </div>
+                    <div class="user-data items m-2">
+                        <div *ngIf="agreement.carDetails?.availibilityStatus=='available'" class="available m-1 p-2 h6"><i class="bi bi-emoji-smile-fill"></i> Available</div>
+                        <div *ngIf="agreement.carDetails?.availibilityStatus=='unavailable'" class="not-available m-1 p-2 h6"><i class="bi bi-emoji-frown-fill"></i> Unavailable</div>
+                    </div>
+                </div>
+                <div class="userDetails">
+                    <div class="user-data items m-2">
+                        <strong><i class="bi bi-envelope-at-fill"> {{agreement.userData?.email}}</i></strong>
+                    </div>
+                    <div class="user-data items m-2">
+                        <strong><i class="bi bi-person-circle"> {{agreement.userData?.name}}</i></strong>
+                    </div>
+                </div>
+            </div>
+            <div class="right col m-2 p-2">
+                <div class="agreement-data items m-2">
+                    <strong>Total <i class="bi bi-currency-rupee">{{agreement.totalCost}}</i></strong>
+                </div>
+                <div class="agreement-data items m-2">
+                    <strong><i class="bi bi-alarm"> {{agreement.rentalDuration}} days</i></strong>
+                </div>
+                <div class="agreement-data items m-2">
+                    <strong><i class="bi bi-calendar-check"> StartDate: {{agreement.fromDate | date:'yyyy-MM-dd'}}</i></strong>
+                </div>
+                <div class="agreement-data items m-2">
+                    <strong><i class="bi bi-calendar-check"> Expected-EndDate: {{agreement.toDate | date:'yyyy-MM-dd'}}</i></strong>
+                </div>
+                <div *ngIf="agreement.isReturnRequested" class="text-danger agreement-data items m-2">
+                    <strong><i class="bi bi-alarm"> Status: {{agreement.isReturned?"Returned":"Under Inspection"}}</i></strong>
+                </div>
+                <div class="button-data items m-2">
+                    <button (click)="handleEdit(agreement.agreementId)" class="btn btn-warning m-2">Edit</button>
+                    <button (click)="handleDelete(agreement.agreementId)" class="btn btn-danger m-2">Delete</button>
+                </div>
+                <div *ngIf="!agreement.isReturned && agreement.isReturnRequested && agreement.isAccepted" class="button-data items m-2">
+                        <button (click)="handleAprroval(agreement.agreementId)" class="btn btn-primary m-2">Approve Return</button>
+                </div>
+            </div>
+            
+        </li>
+        
+    </ul>
+
+</div>

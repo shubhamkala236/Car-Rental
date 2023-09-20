@@ -1,0 +1,12 @@
+nav{
+    display: relative;
+    width: 100%;
+    background-color: rgba(62, 27, 63, 0.774);
+    color: white;
+}
+
+.col,.nav-link{
+    cursor: pointer;
+    border-radius: 3px;
+}
+

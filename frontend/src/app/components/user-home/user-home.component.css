@@ -1,0 +1,15 @@
+.list-item{
+    background: rgb(190, 126, 190,0.2);
+    border: 1px solid rgb(216, 135, 216);
+}
+
+.available{
+    background-color: rgb(53, 202, 53);
+    color: aliceblue;
+    border-radius: 5px;
+}
+.not-available{
+    background-color: red;
+    color: aliceblue;
+    border-radius: 5px;
+}

@@ -1,0 +1,61 @@
+<div class="container-data">
+    <h2 class="text-center m-2">Edit Agreements</h2>
+    <ul class="list-unstyled list-group m-3 p-3">
+        <li class="list-items row m-4 p-3">
+            
+            <div class="left col m-2 p-2">
+                    <div class="car-data items m-2">
+                        <strong><i class="bi bi-car-front-fill"> {{agreementDetail?.carDetails?.maker}}</i></strong>
+                    </div>
+                    <div class="user-data items m-2">
+                        <strong><i class="bi bi-alexa"> {{agreementDetail?.carDetails?.model}}</i></strong>
+                    </div>
+                    <div class="user-data items m-2">
+                        <strong><i class="bi bi-currency-rupee">{{agreementDetail?.carDetails?.rentPrice}}/day</i></strong>
+                    </div>
+                    <div class="user-data items m-2">
+                        <div *ngIf="agreementDetail?.carDetails?.availibilityStatus=='available'" class="available m-1 p-2 h6"><i class="bi bi-emoji-smile-fill"></i> Available</div>
+                        <div *ngIf="agreementDetail?.carDetails?.availibilityStatus=='unavailable'" class="not-available m-1 p-2 h6"><i class="bi bi-emoji-frown-fill"></i> Unavailable</div>
+                    </div>
+                    <div class="user-data items m-2">
+                        <strong><i class="bi bi-envelope-at-fill"> {{agreementDetail?.userData?.email}}</i></strong>
+                    </div>
+                    <div class="user-data items m-2">
+                        <strong><i class="bi bi-person-circle"> {{agreementDetail?.userData?.name}}</i></strong>
+                    </div>
+            </div>
+            <div class="right col m-2 p-2">
+                <div class="agreement-data items m-2">
+                    <strong>Total <i class="bi bi-currency-rupee">{{agreementDetail?.totalCost}}</i></strong>
+                </div>
+                <div class="agreement-data items m-2">
+                    <strong><i class="bi bi-calendar-check"> Old StartDate: {{agreementDetail?.fromDate | date:'yyyy-MM-dd'}}</i></strong>
+                </div>
+                <div class="agreement-data items m-2">
+                    <strong><i class="bi bi-calendar-check"> Old EndDate: {{agreementDetail?.toDate | date:'yyyy-MM-dd'}}</i></strong>
+                </div>
+                <div class="agreement-data items m-2">
+                    <strong><i class="bi bi-alarm"> Update Duration(Starting Today): {{agreementDetail?.rentalDuration}} days</i></strong>
+                </div>
+                
+                <form (ngSubmit)="onSubmitForm(EditDurationForm)" [formGroup]="EditDurationForm">
+                    <div class="agreement-data items m-2">
+                        <input formControlName="rentalDuration" id="days" type="number" class="input form-input form-control" placeholder="Enter duration days">
+                        <div *ngIf="!rentalDuration?.valid && (rentalDuration?.dirty || rentalDuration?.touched)" class="text-start" >
+                            <div *ngIf="rentalDuration?.errors?.['required']" style="color: red;">This field is Required.</div>
+                            <div *ngIf="rentalDuration?.errors?.['maxlength']" style="color: red;">Max Length can be only 100.</div>
+                            <div *ngIf="rentalDuration?.errors?.['minlength']" style="color: red;">Min Length can be only 1.</div>
+                            <div *ngIf="rentalDuration?.errors?.['pattern']" style="color: red;">Days can only be between 1-100.</div>
+                          </div>
+                    </div>
+                    <div class="button-data items m-2">
+                        <button type="submit" class="btn btn-primary m-2">Save</button>
+                    </div>
+                </form>
+            </div>
+            
+        </li>
+        
+    </ul>
+
+</div>

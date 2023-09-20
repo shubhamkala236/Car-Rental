@@ -1,0 +1,45 @@
+<h1 class="my-2 text-center">Create Car</h1>
+<!-- <div class="create-car m-2 p-2"> -->
+    <form (ngSubmit)="submitForm(carForm)" [formGroup]="carForm" class="form-container form-group m-5 p-3 row">
+        <div class="m-1 p-1 row">
+            <label class="col h5">Maker:</label>
+            <input class="col h5 form-control"  formControlName="maker" type="text">
+            <div *ngIf="!maker?.valid && (maker?.dirty || maker?.touched)" class="text-start" >
+                <div *ngIf="maker?.errors?.['required']" style="color: red;">This field is Required.</div>
+            </div>
+        </div>
+        <div class="m-1 p-1 row">
+            <label class="col h5">Model:</label>
+            <input class="col h5 form-control" formControlName="model"  type="text">
+            <div *ngIf="!model?.valid && (model?.dirty || model?.touched)" class="text-start" >
+                <div *ngIf="model?.errors?.['required']" style="color: red;">This field is Required.</div>
+            </div>
+        </div>
+        <div class="m-1 p-1 row">
+            <label class="col h5">Rent Price:</label>
+            <input class="col h5 form-control" formControlName="rentPrice" type="number">
+            <div *ngIf="!rentPrice?.valid && (rentPrice?.dirty || rentPrice?.touched)" class="text-start" >
+                <div *ngIf="rentPrice?.errors?.['required']" style="color: red;">This field is Required.</div>
+                <div *ngIf="rentPrice?.errors?.['pattern']" style="color: red;">Price should be numeric.</div>
+
+            </div>
+        </div>
+        <div class="m-1 p-1 row">
+            <label class="col h5">Availability Status:</label>
+            <div class="gap-3 col h6">
+                <div class="form-check col">
+                    <input class="form-check-input mt-1" type="radio" value="available" formControlName="availibilityStatus">
+                    <label class="form-check-label">Available</label>
+                </div>
+                <div class="form-check col">
+                    <input class="form-check-input mt-1" type="radio" value="unavailable" formControlName="availibilityStatus">
+                    <label class="form-check-label">Not Available</label>
+                </div>
+                <div *ngIf="!availibilityStatus?.valid && (availibilityStatus?.dirty || availibilityStatus?.touched)" class="text-start" >
+                    <div *ngIf="availibilityStatus?.errors?.['required']" style="color: red;">This field is Required.</div>
+                </div>
+            </div>
+        </div>
+        <button [disabled]="!carForm.valid" class="btn btn-primary btn-lg btn-block" type="submit">Create</button>
+    </form>
+<!-- </div> -->
